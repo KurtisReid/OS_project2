@@ -102,6 +102,18 @@ void myFCFS() {
 
 void mySJF() {
 	// for you to implement
+	int cpu_time[];
+	int cpu_length;
+	int shortest_job = 0;
+
+	for (int i = 0; i < cpu_length; i++)
+	{
+		for (int f = 0; f < cpu_length; f++)
+		{
+
+		}
+	}
+
 
 
 }
