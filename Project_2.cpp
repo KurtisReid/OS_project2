@@ -227,6 +227,7 @@ void myPriority() {
 
 
 	std::sort(priorityArr, priorityArr + size);//sorts priority
+	std::reverse(priorityArr, priorityArr + size);//reversing array so it reads correctly
 										 /*for (int z = 0; z < size; z++)
 										 {
 										 std::cout << priority[z] << std::endl;
@@ -256,7 +257,7 @@ void myPriority() {
 		wait_t[i] = t;
 		t = t + burst_arr[i];
 		//compute turnaround time
-		turn_t[i] = wait_t[i] + burst_arr[i];
+		turn_t[i] = wait_t[i] + burst[i];
 
 		std::cout << "P" << pid_arr[i] << "\t" << wait_t[i] << "\t" << turn_t[i] << "\n";
 		i++;
