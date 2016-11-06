@@ -28,20 +28,17 @@ struct process
 	std::string pid;
 	int cpu_burst;
 	int priority;
-
+	int read = 0;
 	void print_struct()
 	{
 		std::cout << "pid: " << pid << std::endl
 			<< "cpu_burst " << cpu_burst << std::endl
-			<< "Priority: " << priority << std::endl;
+			<< "Priority: " << priority << std::endl
+			<< "read: " << read << std::endl;
 	}
 };
-std::ostream& operator<<(std::ostream& os, const process& p) {
-	return os << "pid: " << p.pid << std::endl
-		<< "cpu_burst " << p.cpu_burst << std::endl
-		<< "Priority: " << p.priority << std::endl;
-}
 
+process processes[10];
 //the function initializes the data arrays with records from the file stream
 void initFrom(std::ifstream& in) {
 
@@ -50,7 +47,7 @@ void initFrom(std::ifstream& in) {
 	int proi;
 	int i = 0;
 	//process * pointer = new process[10];//array of process structures
-	//std::ostringstream oss;
+	
 	//prints out the header of the file
 	if (!in.eof()) {
 		in >> id;
@@ -60,7 +57,7 @@ void initFrom(std::ifstream& in) {
 		in >> temp;
 		std::cout << temp << "\n";
 	}
-	process processes[10];
+	
 	//reading in data from the file and storing it in the right array
 	while (!in.eof() && in >> id && in >> b_time && in >> proi && i < 10) {
 
@@ -91,6 +88,8 @@ void initFrom(std::ifstream& in) {
 	}
 	
 }
+
+
 
 
 
@@ -144,18 +143,25 @@ void mySJF() {
 	double avg_turn = 0;
 	int i = 0;
 	int t = 0;
-	int shortest_job = 0;
-	int burst2[10];
-	
-	std::cout << "\nPID\twait\tturnaround\n";
+	int smallest_cpu;
+	std::string pid_arr[10];
+	int priority_arr[10];
 
+	std::sort(burst, burst + size);
 
+	for (int x = 0; x < size; x++)
+	{
+		for (int y = 0; y < size; y++)
+		{
+			if (burst[x] = processes[y].cpu_burst)
+			{
+				pid_arr[x] = processes[y].pid;
+				priority_arr[x] = processes[y].priority;
 
-
-	//map out pid and priority to 
-	//sort burst array
-	//sort(burst, 10);
-
+			}
+		}
+		
+	}
 	//calculating wait-time and turnarround-time for each process
 	while (i<size) {
 		//compute wait time
@@ -183,7 +189,7 @@ void mySJF() {
 	std::cout << "AVG wait is: " << avg_wait << "\n";
 	std::cout << "AVG turnaround is: " << avg_turn << "\n";
 
-
+	
 
 }
 
