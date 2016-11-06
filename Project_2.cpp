@@ -218,9 +218,15 @@ void myPriority() {
 	int smallest_cpu;
 	std::string pid_arr[10];//array to store pid in
 	int burst_arr[10];//array to store cpu_bursts in
+	int priorityArr[10];
+	for (int z = 0; z < size; z++)
+	{
+		priorityArr[z] = priority[z];
+		//std::cout << burst[z] << std::endl;
+	}
 
 
-	std::sort(priority, priority + size);//sorts priority
+	std::sort(priorityArr, priorityArr + size);//sorts priority
 										 /*for (int z = 0; z < size; z++)
 										 {
 										 std::cout << priority[z] << std::endl;
@@ -231,7 +237,7 @@ void myPriority() {
 	{
 		for (int y = 6; y >= 0; y--)//iterate through processes array
 		{
-			if (priority[y] == processes[x].priority)
+			if (priorityArr[y] == processes[x].priority)
 			{
 				//std::cout << burst[x] << "=" << processes[y].cpu_burst << std::endl;
 				pid_arr[y] = processes[x].pid;//matching pid from struct to its proper place in array
@@ -248,9 +254,9 @@ void myPriority() {
 	while (i<size) {
 		//compute wait time
 		wait_t[i] = t;
-		t = t + burst[i];
+		t = t + burst_arr[i];
 		//compute turnaround time
-		turn_t[i] = wait_t[i] + burst[i];
+		turn_t[i] = wait_t[i] + burst_arr[i];
 
 		std::cout << "P" << pid_arr[i] << "\t" << wait_t[i] << "\t" << turn_t[i] << "\n";
 		i++;
