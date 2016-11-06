@@ -1,2 +1,4 @@
-﻿  Project_2.vcxproj -> c:\users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.exe
-  Project_2.vcxproj -> c:\users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.pdb (Full PDB)
+﻿  Project_2.cpp
+c:\users\kreid\documents\visual studio 2015\projects\project_2\project_2\project_2.cpp(148): warning C4101: 'burst2': unreferenced local variable
+  Project_2.vcxproj -> C:\Users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.exe
+  Project_2.vcxproj -> C:\Users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.pdb (Full PDB)
