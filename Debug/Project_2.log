@@ -1,4 +1,5 @@
 ﻿  Project_2.cpp
 c:\users\kreid\documents\visual studio 2015\projects\project_2\project_2\project_2.cpp(146): warning C4101: 'smallest_cpu': unreferenced local variable
+c:\users\kreid\documents\visual studio 2015\projects\project_2\project_2\project_2.cpp(218): warning C4101: 'smallest_cpu': unreferenced local variable
   Project_2.vcxproj -> C:\Users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.exe
   Project_2.vcxproj -> C:\Users\kreid\documents\visual studio 2015\Projects\Project_2\Debug\Project_2.pdb (Full PDB)
