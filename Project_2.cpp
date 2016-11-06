@@ -38,7 +38,7 @@ struct process
 	}
 };
 
-process processes[10];
+process processes[6];
 //the function initializes the data arrays with records from the file stream
 void initFrom(std::ifstream& in) {
 
@@ -147,14 +147,21 @@ void mySJF() {
 	std::string pid_arr[10];
 	int priority_arr[10];
 
-	std::sort(burst, burst + size);
 
-	for (int x = 0; x < size; x++)
+	std::sort(burst, burst + size);//sorts cpu_burst times
+	for (int z = 0; z < size; z++)
 	{
-		for (int y = 0; y < size; y++)
+		std::cout << burst[z] << std::endl;
+	}
+
+	//matching sorted cpu burst time to pid and priority 
+	for (int x = 0; x < 6; x++)
+	{
+		for (int y = 6; y >= 0; y--)
 		{
-			if (burst[x] = processes[y].cpu_burst)
+			if (burst[x] == processes[y].cpu_burst)
 			{
+				std::cout << burst[x] << "=" << processes[y].cpu_burst << std::endl;
 				pid_arr[x] = processes[y].pid;
 				priority_arr[x] = processes[y].priority;
 
@@ -162,6 +169,9 @@ void mySJF() {
 		}
 		
 	}
+
+	std::cout << "\nPID\twait\tturnaround\n";
+
 	//calculating wait-time and turnarround-time for each process
 	while (i<size) {
 		//compute wait time
@@ -170,7 +180,7 @@ void mySJF() {
 		//compute turnaround time
 		turn_t[i] = wait_t[i] + burst[i];
 
-		std::cout << "P" << i + 1 << "\t" << wait_t[i] << "\t" << turn_t[i] << "\n";
+		std::cout << "P" << pid_arr[i] << "\t" << wait_t[i] << "\t" << turn_t[i] << "\n";
 		i++;
 	}
 
