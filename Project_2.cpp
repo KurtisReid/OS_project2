@@ -355,6 +355,110 @@ void myLJF() {
 
 void myRR() {
 	//Extra credit question
+	int quantium = 3;
+	int wait_t[10];
+	int turn_t[10];
+	double avg_wait = 0;
+	double avg_turn = 0;
+	int i = 0;
+	int t = 0;
+	int largestCPUBurst = 0;
+	std::string pid_arr[10];//array to store pid in
+	int priority_arr[10];//array to store priorityies in
+	int burstArr[10];
+	for (int z = 0; z < size; z++)
+	{
+		burstArr[z] = burst[z];
+		if (largestCPUBurst < burst[z])
+		{
+			largestCPUBurst = z;
+		}
+		
+		//std::cout << burst[z] << std::endl;
+	}
+
+
+
+	//std::sort(burstArr, burstArr + size);//sorts cpu_burst times
+
+
+										 //matching sorted cpu burst time to pid and priority 
+	for (int x = 0; x < 6; x++)//iterate through sorted burst array
+	{
+		for (int y = 6; y >= 0; y--)//iterate through processes array
+		{
+			if (burstArr[x] == processes[y].cpu_burst)
+			{
+				//std::cout << burst[x] << "=" << processes[y].cpu_burst << std::endl;
+				pid_arr[x] = processes[y].pid;//matching pid from struct to its proper place in array
+				priority_arr[x] = processes[y].priority;// matching priority from struct to its proper place in array
+
+			}
+		}
+
+	}
+
+	std::cout << "\nPID\twait\tturnaround\tburst\n";
+	//round(burstArr[largestCPUBurst] / quantium);
+	
+	do {
+		//calculating wait-time and turnarround-time for each process
+		while (i < size) {
+			
+			//compute wait time
+			if (burstArr[i] == 0)
+			{
+
+			}
+			else if ((burstArr[i] - quantium) < 0)
+			{
+				wait_t[i] = t;
+				turn_t[i] = wait_t[i] + burstArr[i];
+				burstArr[i] = 0;
+				
+				t = t + burstArr[i];
+			}
+
+			if (burstArr[i] - quantium >= 0)
+			{
+				wait_t[i] = t;
+				burstArr[i] = burstArr[i] - quantium;
+				turn_t[i] = wait_t[i] + burstArr[i];
+				t = t + quantium;
+				
+			}
+			else
+			{
+				burstArr[i] = 0;
+			}
+
+			//t = t + burstArr[i];
+			//compute turnaround time
+
+
+			std::cout << "P" << pid_arr[i] << "\t" << wait_t[i] << "\t" << turn_t[i] << "\t" << burstArr[i] << "\n";
+			i++;
+
+		}
+		i = 0;
+	} while (burstArr[largestCPUBurst] > 0);
+	//calculating the averages of wait time and turnaround time
+	i = 0;
+	while (i<size) {
+		avg_wait = avg_wait + wait_t[i];
+		avg_turn = avg_turn + turn_t[i];
+		i++;
+	}
+
+	avg_wait = avg_wait / size;
+	avg_turn = avg_turn / size;
+
+	//printing the averages
+	std::cout << "AVG wait is: " << avg_wait << "\n";
+	std::cout << "AVG turnaround is: " << avg_turn << "\n";
+
+
+
 
 
 }
